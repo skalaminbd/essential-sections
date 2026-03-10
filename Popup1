@@ -1,0 +1,299 @@
+<div class="cp-popup-block" data-popup="diagnostics">
+  <button class="cp-popup-trigger" type="button" data-popup="diagnostics">
+    <span class="cp-popup-trigger-text">Learn more</span>
+    <span class="cp-popup-trigger-icon" aria-hidden="true">→</span>
+  </button>
+
+  <div class="cp-popup-overlay" data-popup="diagnostics">
+    <div class="cp-popup-modal" role="dialog" aria-modal="true">
+      <button class="cp-popup-close" type="button" aria-label="Close popup">×</button>
+
+      <div class="cp-popup-icon-wrap">
+        <img src="https://mediumvioletred-newt-306440.hostingersite.com/wp-content/uploads/2026/03/brain.svg" alt="" class="cp-popup-icon" />
+      </div>
+
+      <h2 class="cp-popup-title">AI-Powered Diagnostics
+</h2>
+
+      <div class="cp-popup-content">
+        <p>We partner with companies developing breakthrough diagnostic solutions that leverage artificial intelligence and advanced analytics to enhance accuracy, speed, and accessibility.</p>
+
+        <p><strong>Our focus includes:</strong></p>
+
+        <ul>
+          <li>Medical imaging platforms using computer vision for disease detection</li>
+          <li>Clinical decision support systems that assist healthcare providers in real-time</li>
+          <li>Predictive analytics tools for early disease identification and risk stratification</li>
+        </ul>
+
+        <p>
+          We seek companies with strong clinical validation, proprietary technology,
+          clear regulatory pathways, and teams that combine clinical and technical
+          expertise to deliver measurable improvements in patient outcomes.
+        </p>
+      </div>
+
+      <div class="cp-popup-footer">
+        <a href="#" class="cp-popup-cta">
+          <span>Contact Us to Discuss Your Company</span>
+          <span class="cp-popup-cta-icon" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cp-popup-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--theme-palette-color-1);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    position: relative;
+    transition: .5s ease all;
+  }
+  .cp-popup-trigger:hover {
+    color: var(--theme-palette-color-2);
+  }
+
+  .cp-popup-trigger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 95px;
+    height: 1px;
+    background: rgba(32, 42, 100, 0.22);
+  }
+
+  .cp-popup-trigger-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .cp-popup-trigger:hover .cp-popup-trigger-icon {
+    transform: translateX(6px);
+  }
+
+  .cp-popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999999;
+  }
+
+  .cp-popup-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .cp-popup-modal {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 20px 60px rgba(11, 19, 53, 0.22);
+    transform: translateY(18px) scale(0.98);
+    transition: transform 0.3s ease;
+  }
+
+  .cp-popup-overlay.is-active .cp-popup-modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .cp-popup-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: #eceef3;
+    color: #5c6477;
+    font-size: 22px;
+    line-height: 1.9;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cp-popup-icon-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    background: #FEF7EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .cp-popup-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .cp-popup-title {
+    margin: 0 0 20px;
+    color: #17203c;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .cp-popup-content {
+    color: #384561;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .cp-popup-content p {
+    margin: 0 0 16px;
+  }
+
+  .cp-popup-content ul {
+    margin: 0 0 18px 18px;
+    padding: 0;
+  }
+
+  .cp-popup-content li {
+    margin-bottom: 8px;
+  }
+
+  .cp-popup-footer {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #d8dde8;
+  }
+
+  .cp-popup-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    background: #f0a928;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .cp-popup-cta-icon {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .cp-popup-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(240, 169, 40, 0.28);
+    color: #fff !important;
+  }
+
+  .cp-popup-cta:hover .cp-popup-cta-icon {
+    transform: translateX(5px);
+  }
+
+  body.cp-popup-open {
+    overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    .cp-popup-overlay {
+      padding: 16px;
+    }
+
+    .cp-popup-modal {
+      max-width: 100%;
+      padding: 24px 20px;
+      border-radius: 18px;
+    }
+
+    .cp-popup-title {
+      font-size: 22px;
+    }
+
+    .cp-popup-content {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .cp-popup-trigger {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const blocks = document.querySelectorAll(".cp-popup-block");
+
+    blocks.forEach(function (block) {
+      const trigger = block.querySelector(".cp-popup-trigger");
+      const popupName = trigger ? trigger.getAttribute("data-popup") : "";
+      const overlay = document.querySelector('.cp-popup-overlay[data-popup="' + popupName + '"]');
+      const closeBtn = overlay ? overlay.querySelector(".cp-popup-close") : null;
+      const modal = overlay ? overlay.querySelector(".cp-popup-modal") : null;
+
+      if (!trigger || !overlay || !closeBtn || !modal) return;
+
+      if (!overlay.dataset.appendedToBody) {
+        document.body.appendChild(overlay);
+        overlay.dataset.appendedToBody = "true";
+      }
+
+      trigger.addEventListener("click", function () {
+        overlay.classList.add("is-active");
+        document.body.classList.add("cp-popup-open");
+      });
+
+      closeBtn.addEventListener("click", function () {
+        overlay.classList.remove("is-active");
+        document.body.classList.remove("cp-popup-open");
+      });
+
+      overlay.addEventListener("click", function (e) {
+        if (!modal.contains(e.target)) {
+          overlay.classList.remove("is-active");
+          document.body.classList.remove("cp-popup-open");
+        }
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        document.querySelectorAll(".cp-popup-overlay.is-active").forEach(function (overlay) {
+          overlay.classList.remove("is-active");
+        });
+        document.body.classList.remove("cp-popup-open");
+      }
+    });
+  });
+</script>
