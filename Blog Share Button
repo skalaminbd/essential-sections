@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+<style>
+body{background:#000;display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+  .custom-share-wrap {
+    position: relative;
+  }
+
+  .custom-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: 0.25s ease;
+  }
+
+  .custom-share-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .custom-share-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .custom-share-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .custom-share-popup.active {
+    display: flex;
+  }
+
+  .custom-share-box {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+
+  .custom-share-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #f3f3f3;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .custom-share-title {
+    margin: 0 0 14px;
+    font-size: 22px;
+    color: #111;
+  }
+
+  .custom-share-desc {
+    margin: 0 0 16px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .custom-share-url {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .custom-share-url input {
+    flex: 1;
+    height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0 12px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .custom-copy-btn {
+    height: 44px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .custom-share-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .custom-share-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #e7e7e7;
+    color: #111;
+    transition: 0.2s ease;
+  }
+
+  .custom-share-link:hover {
+    transform: translateY(-1px);
+  }
+
+  .custom-copy-msg {
+    margin-top: 12px;
+    font-size: 13px;
+    color: green;
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .custom-share-links {
+      grid-template-columns: 1fr;
+    }
+
+    .custom-share-url {
+      flex-direction: column;
+    }
+
+    .custom-copy-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="custom-share-wrap">
+  <button class="custom-share-btn" id="openSharePopup" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7a2.48 2.48 0 0 0 0-1.39l7-4.11A2.99 2.99 0 1 0 15 5a2.9 2.9 0 0 0 .06.59l-7 4.11a3 3 0 1 0 0 4.6l7.05 4.14c-.04.18-.06.37-.06.56a3 3 0 1 0 3-2.92z"></path>
+    </svg>
+    <span>Share</span>
+  </button>
+</div>
+
+<div class="custom-share-popup" id="sharePopup">
+  <div class="custom-share-box">
+    <button class="custom-share-close" id="closeSharePopup" type="button">×</button>
+
+    <h3 class="custom-share-title">Share this article</h3>
+    <p class="custom-share-desc">Share this page with your friends.</p>
+
+    <div class="custom-share-url">
+      <input type="text" id="currentPageUrl" readonly>
+      <button class="custom-copy-btn" id="copyShareUrl" type="button">Copy</button>
+    </div>
+
+    <div class="custom-share-links">
+      <a class="custom-share-link" id="facebookShare" href="#" target="_blank" rel="noopener">Facebook</a>
+      <a class="custom-share-link" id="whatsappShare" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="custom-share-link" id="telegramShare" href="#" target="_blank" rel="noopener">Telegram</a>
+      <a class="custom-share-link" id="twitterShare" href="#" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+
+    <div class="custom-copy-msg" id="copyMsg">Link copied successfully</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const openBtn = document.getElementById("openSharePopup");
+    const closeBtn = document.getElementById("closeSharePopup");
+    const popup = document.getElementById("sharePopup");
+    const urlInput = document.getElementById("currentPageUrl");
+    const copyBtn = document.getElementById("copyShareUrl");
+    const copyMsg = document.getElementById("copyMsg");
+
+    const facebookShare = document.getElementById("facebookShare");
+    const whatsappShare = document.getElementById("whatsappShare");
+    const telegramShare = document.getElementById("telegramShare");
+    const twitterShare = document.getElementById("twitterShare");
+
+    function setShareLinks() {
+      const currentUrl = window.location.href;
+      const pageTitle = document.title;
+
+      urlInput.value = currentUrl;
+
+      facebookShare.href =
+        "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(currentUrl);
+
+      whatsappShare.href =
+        "https://wa.me/?text=" + encodeURIComponent(pageTitle + " " + currentUrl);
+
+      telegramShare.href =
+        "https://t.me/share/url?url=" + encodeURIComponent(currentUrl) +
+        "&text=" + encodeURIComponent(pageTitle);
+
+      twitterShare.href =
+        "https://twitter.com/intent/tweet?url=" + encodeURIComponent(currentUrl) +
+        "&text=" + encodeURIComponent(pageTitle);
+    }
+
+    openBtn.addEventListener("click", function () {
+      setShareLinks();
+      popup.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", function () {
+      popup.classList.remove("active");
+    });
+
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) {
+        popup.classList.remove("active");
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        popup.classList.remove("active");
+      }
+    });
+
+    copyBtn.addEventListener("click", function () {
+      urlInput.select();
+      urlInput.setSelectionRange(0, 99999);
+
+      navigator.clipboard.writeText(urlInput.value).then(function () {
+        copyMsg.style.display = "block";
+        setTimeout(function () {
+          copyMsg.style.display = "none";
+        }, 2000);
+      });
+    });
+  })();
+</script>
+  </body>
+</html>
